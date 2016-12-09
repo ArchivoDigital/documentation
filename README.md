@@ -16,7 +16,7 @@ Esta guía te ayudará a desarrollar tus apps con Archivo.Digital, si tiene algu
     3.2.  [update](#Actualizar)
     3.3.  [delete](#Eliminar)
     3.4.  [find](#Consultas)
-    3.4.  [find where](#Filtros)
+    3.5.  [find where](#Filtros)
 
 ## Cuenta
 
@@ -253,6 +253,38 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 ```
+## Consultas
+Para realizar consultas sobre los datos basta con hacer una petición a "https://archivo.digital/api/data/v1/row/find" enviando como parametro el dominio y el modelo a consultar.
 
+
+##### curl
+
+```curl
+curl -X POST -H "Content-Type: application/json" -H "App-Key: bcd864-abb2fb-48bab1-34fbca-ca76a3" -H "Authorization: Bearer 211ac0c4-6f06-4894-aac7-a2ea7967176e" -H "Accept-Encoding: gzip" -d '{"domain":85,"row_model":"personalInfo"}' "https://archivo.digital/api/data/v1/row/find"
+' "https://archivo.digital/api/data/v1/row/update"
+```
+
+##### javascript JQuery
+```javascript
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://archivo.digital/api/data/v1/row/find",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "app-key": "bcd864-abb4fb-48bab1-34fbca-ca76a3",
+    "authorization": "Bearer 211ac1c4-6f06-4894-aac7-a2ea7967176e",
+    "accept-encoding": "gzip"
+  },
+  "processData": false,
+  "data": "{\"domain\":85,\"row_model\":\"personalInfo\"}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+```
 
 [//]: # ()
